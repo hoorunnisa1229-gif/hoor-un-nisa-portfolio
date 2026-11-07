@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5f1">
+  <title>Hoor un Nisa — AI Engineer & Entrepreneur</title>
+  <meta name="description" content="Hoor un Nisa is an AI Engineer and entrepreneur building production-ready intelligent systems and the businesses around them. Based in Multan, Pakistan.">
+  <meta name="author" content="Hoor un Nisa">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="[EDIT: YOUR_WEBSITE_URL]">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hoor un Nisa — AI Engineer & Entrepreneur">
+  <meta property="og:description" content="Building the technology, and the business around it.">
+  <meta property="og:url" content="[EDIT: YOUR_WEBSITE_URL]">
+  <meta property="og:image" content="[EDIT: SOCIAL_PREVIEW_IMAGE_URL]">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hoor un Nisa — AI Engineer & Entrepreneur">
+  <meta name="twitter:description" content="Building the technology, and the business around it.">
+  <meta name="twitter:image" content="[EDIT: SOCIAL_PREVIEW_IMAGE_URL]">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* -------------------------------------------------------
+       DESIGN TOKENS
+    ------------------------------------------------------- */
+    :root {
+      color-scheme: light;
+      --bg: #f4f5f1;
+      --surface: #ffffff;
+      --surface-2: #eaede7;
+      --text: #17221f;
+      --muted: #5d6a64;
+      --line: #d7ddd6;
+      --accent: #176b55;
+      --accent-strong: #0e513f;
+      --accent-soft: #dcebe4;
+      --ink-inverse: #f5f7f2;
+      --shadow: 0 18px 50px rgba(24, 45, 36, .08);
+      --radius-sm: 8px;
+      --radius: 16px;
+      --radius-lg: 26px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 88px;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-body: "DM Sans", sans-serif;
+      --font-mono: "DM Mono", monospace;
+      --container: 1160px;
+      --nav-height: 76px;
+    }
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #101714;
+      --surface: #17211c;
+      --surface-2: #202d26;
+      --text: #edf3ed;
+      --muted: #aab8ae;
+      --line: #304139;
+      --accent: #72c6a7;
+      --accent-strong: #9be0c2;
+      --accent-soft: #213d31;
+      --ink-inverse: #101714;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .22);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #101714; --surface: #17211c; --surface-2: #202d26;
+        --text: #edf3ed; --muted: #aab8ae; --line: #304139;
+        --accent: #72c6a7; --accent-strong: #9be0c2;
+        --accent-soft: #213d31; --ink-inverse: #101714;
+        --shadow: 0 18px 50px rgba(0, 0, 0, .22);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 20px); }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 400 16px/1.65 var(--font-body); -webkit-font-smoothing: antialiased;
+      transition: background-color .25s ease, color .25s ease;
+    }
+    img, svg { max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 3px solid var(--accent); outline-offset: 4px;
+    }
+    ::selection { background: var(--accent); color: var(--ink-inverse); }
+    .container { width: min(var(--container), calc(100% - 48px)); margin-inline: auto; }
+    .section { padding: var(--space-9) 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 38px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); font: 500 11px/1.4 var(--font-mono); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--font-display); letter-spacing: -.045em; }
+    h2 { margin: 13px 0 0; font-size: clamp(2.1rem, 4vw, 3.5rem); line-height: 1.08; font-weight: 600; }
+    h3 { font-size: 1.25rem; line-height: 1.25; }
+    .section-intro { max-width: 410px; color: var(--muted); margin: 0; }
+    .mono { font-family: var(--font-mono); }
+    .muted { color: var(--muted); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 48px; padding: 0 19px; border: 1px solid var(--accent);
+      border-radius: 999px; background: var(--accent); color: var(--ink-inverse);
+      font-size: 13px; font-weight: 700; transition: transform .2s, background .2s, border-color .2s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); background: var(--accent-strong); border-color: var(--accent-strong); }
+    .btn-secondary { color: var(--text); background: transparent; border-color: var(--line); }
+    .btn-secondary:hover { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 13px; font-weight: 700; }
+    .text-link svg { transition: transform .2s; }
+    .text-link:hover svg { transform: translate(3px, -3px); }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .tag { display: inline-flex; padding: 5px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font: 11px var(--font-mono); }
+    .skip-link { position: absolute; top: -60px; left: 12px; z-index: 1000; padding: 10px 14px; background: var(--text); color: var(--bg); border-radius: 8px; }
+    .skip-link:focus { top: 12px; }
+
+    /* -------------------------------------------------------
+       NAVIGATION
+    ------------------------------------------------------- */
+    .site-nav { height: var(--nav-height); position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(16px); border-bottom: 1px solid color-mix(in srgb, var(--line) 75%, transparent); }
+    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font: 700 15px var(--font-display); letter-spacing: -.03em; white-space: nowrap; }
+    .brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px 10px 10px 3px; background: var(--accent); color: var(--ink-inverse); font: 600 13px var(--font-mono); }
+    .nav-links { display: flex; align-items: center; gap: clamp(13px, 2vw, 25px); margin-left: auto; }
+    .nav-links a { color: var(--muted); font-size: 12px; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-cta { min-height: 40px; padding-inline: 15px; font-size: 12px; }
+    .theme-toggle, .menu-toggle { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; color: var(--text); background: var(--surface); cursor: pointer; }
+    .menu-toggle { display: none; }
+
+    /* -------------------------------------------------------
+       HERO + SIGNATURE VISUAL
+    ------------------------------------------------------- */
+    .hero { position: relative; overflow: hidden; padding: clamp(78px, 10vw, 142px) 0 90px; }
+    .hero::before { content: ""; position: absolute; width: 460px; height: 460px; right: -210px; top: 40px; border: 1px solid var(--line); border-radius: 50%; opacity: .7; pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: clamp(40px, 7vw, 90px); }
+    .availability { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 25px; padding: 7px 11px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font: 11px var(--font-mono); }
+    .availability-dot { width: 7px; height: 7px; border-radius: 50%; background: #36966d; box-shadow: 0 0 0 4px color-mix(in srgb, #36966d 15%, transparent); }
+    .hero h1 { max-width: 760px; margin: 0; font-size: clamp(3.5rem, 8vw, 7.4rem); line-height: .94; font-weight: 600; }
+    .hero h1 span { display: block; color: var(--accent); }
+    .hero-lede { max-width: 570px; margin: 26px 0 13px; font: 500 clamp(1.05rem, 1.7vw, 1.35rem)/1.45 var(--font-display); letter-spacing: -.025em; }
+    .hero-copy { max-width: 525px; color: var(--muted); font-size: 15px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
+    .hero-note { display: flex; gap: 12px; align-items: center; margin-top: 42px; color: var(--muted); font: 11px var(--font-mono); }
+    .hero-note::before { content: ""; width: 42px; height: 1px; background: var(--line); }
+    .signal-card { position: relative; padding: 18px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+    .signal-top { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .1em; }
+    .signal-status { display: flex; align-items: center; gap: 7px; color: var(--accent); }
+    .signal-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .signal-svg { display: block; width: 100%; margin: 18px 0 10px; overflow: visible; }
+    .signal-svg .gridline { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 6; }
+    .signal-svg .path { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; stroke-dasharray: 500; stroke-dashoffset: 500; animation: draw 2.3s .2s ease forwards; }
+    .signal-svg .node { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
+    .signal-svg .pulse { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes pulse { 50% { opacity: .45; transform: scale(1.5); } }
+    .signal-legend { display: flex; justify-content: space-between; gap: 12px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font: 10px var(--font-mono); }
+    .signal-legend strong { color: var(--text); font-weight: 500; }
+    .hero-index { position: absolute; bottom: 24px; right: max(24px, calc((100vw - var(--container)) / 2)); color: var(--muted); font: 10px var(--font-mono); }
+
+    /* -------------------------------------------------------
+       ABOUT
+    ------------------------------------------------------- */
+    .about-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(35px, 7vw, 90px); align-items: start; }
+    .portrait-placeholder { min-height: 390px; display: grid; place-items: center; position: relative; overflow: hidden; border-radius: var(--radius-lg); background: var(--surface-2); border: 1px solid var(--line); }
+    .portrait-placeholder::before, .portrait-placeholder::after { content: ""; position: absolute; border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); border-radius: 50%; width: 260px; height: 260px; }
+    .portrait-placeholder::after { width: 340px; height: 340px; }
+    .portrait-initials { z-index: 1; color: var(--accent); font: 600 clamp(4rem, 8vw, 6.5rem)/1 var(--font-display); letter-spacing: -.1em; }
+    .portrait-caption { position: absolute; bottom: 17px; left: 19px; color: var(--muted); font: 10px var(--font-mono); }
+    .about-copy p { color: var(--muted); max-width: 690px; }
+    .about-copy p:first-of-type { color: var(--text); font-size: 1.15rem; line-height: 1.65; }
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 34px; }
+    .fact { padding: 16px 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+    .fact strong { display: block; font: 600 1.35rem var(--font-display); letter-spacing: -.04em; }
+    .fact span { display: block; margin-top: 5px; color: var(--muted); font: 10px/1.4 var(--font-mono); }
+
+    /* -------------------------------------------------------
+       EXPERTISE
+    ------------------------------------------------------- */
+    .expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .expertise-card { padding: clamp(23px, 3vw, 36px); }
+    .expertise-card .card-kicker { color: var(--accent); font: 11px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+    .expertise-card h3 { margin: 17px 0 10px; font-size: 1.65rem; }
+    .expertise-card > p { max-width: 460px; color: var(--muted); font-size: 14px; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
+    .skill-list .tag { color: var(--text); }
+
+    /* -------------------------------------------------------
+       VENTURES
+    ------------------------------------------------------- */
+    .venture-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .venture-card { display: flex; flex-direction: column; min-height: 260px; padding: 23px; transition: transform .25s, border-color .25s; }
+    .venture-card:hover, .project-card:hover, .service-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .card-topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .status { padding: 5px 8px; border-radius: 5px; background: var(--accent-soft); color: var(--accent-strong); font: 10px var(--font-mono); }
+    .venture-card h3 { margin: 23px 0 8px; }
+    .venture-card p { color: var(--muted); font-size: 13px; }
+    .venture-meta { display: flex; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font: 10px var(--font-mono); }
+
+    /* -------------------------------------------------------
+       PROJECTS
+    ------------------------------------------------------- */
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: -8px 0 24px; }
+    .filter-btn { padding: 8px 13px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); font: 11px var(--font-mono); cursor: pointer; }
+    .filter-btn[aria-pressed="true"], .filter-btn:hover { color: var(--ink-inverse); background: var(--accent); border-color: var(--accent); }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .project-card { display: flex; flex-direction: column; padding: 22px; min-height: 340px; transition: transform .25s, border-color .25s; }
+    .project-type { color: var(--accent); font: 10px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+    .project-card h3 { margin: 15px 0 9px; }
+    .project-problem, .project-approach { color: var(--muted); font-size: 12px; }
+    .project-problem strong, .project-approach strong { color: var(--text); }
+    .project-card .skill-list { margin: 15px 0; }
+    .project-outcome { margin-top: auto; padding: 12px 0; border-top: 1px solid var(--line); color: var(--text); font: 11px var(--font-mono); }
+    .project-links { display: flex; flex-wrap: wrap; gap: 14px; }
+    .project-links a { color: var(--accent); font-size: 11px; font-weight: 700; }
+    .empty-state { grid-column: 1 / -1; padding: 30px; color: var(--muted); text-align: center; border: 1px dashed var(--line); border-radius: var(--radius); }
+
+    /* -------------------------------------------------------
+       STACK
+    ------------------------------------------------------- */
+    .stack-wrap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .stack-group { padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 13px; }
+    .stack-group h3 { margin: 0 0 17px; color: var(--muted); font: 10px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+    .stack-items { display: flex; flex-wrap: wrap; gap: 7px; }
+    .stack-items span { padding: 6px 8px; border-radius: 6px; background: var(--surface-2); font-size: 11px; }
+
+    /* -------------------------------------------------------
+       EXPERIENCE
+    ------------------------------------------------------- */
+    .timeline { max-width: 850px; margin-left: 8px; border-left: 1px solid var(--line); }
+    .timeline-item { position: relative; padding: 0 0 34px 32px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before { content: ""; position: absolute; left: -5px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px var(--bg); }
+    .timeline-date { color: var(--accent); font: 10px var(--font-mono); letter-spacing: .08em; }
+    .timeline-item h3 { margin: 8px 0 4px; }
+    .timeline-item p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    /* -------------------------------------------------------
+       WRITING + TESTIMONIALS
+    ------------------------------------------------------- */
+    .writing-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .writing-item { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 20px; }
+    .writing-item h3 { margin: 5px 0 4px; font-size: 1rem; }
+    .writing-item p { margin: 0; color: var(--muted); font: 10px var(--font-mono); }
+    .writing-kind { color: var(--accent); font: 10px var(--font-mono); text-transform: uppercase; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .quote-card { padding: 24px; }
+    .quote-mark { color: var(--accent); font: 3rem/.8 var(--font-display); }
+    .quote-card blockquote { margin: 20px 0; font: 500 1rem/1.55 var(--font-display); letter-spacing: -.02em; }
+    .quote-author { color: var(--muted); font: 10px/1.6 var(--font-mono); }
+    .placeholder-note { display: inline-block; margin-top: 12px; color: var(--muted); font: 9px var(--font-mono); }
+
+    /* -------------------------------------------------------
+       SERVICES
+    ------------------------------------------------------- */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .service-card { display: flex; flex-direction: column; padding: 24px; transition: transform .25s, border-color .25s; }
+    .service-number { color: var(--accent); font: 11px var(--font-mono); }
+    .service-card h3 { margin: 20px 0 9px; }
+    .service-card > p { color: var(--muted); font-size: 13px; }
+    .service-card ul { margin: 5px 0 25px; padding-left: 17px; color: var(--muted); font-size: 12px; }
+    .service-card li { margin: 7px 0; }
+    .service-card .text-link { margin-top: auto; }
+
+    /* -------------------------------------------------------
+       CONTACT + FOOTER
+    ------------------------------------------------------- */
+    .contact-panel { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(30px, 6vw, 75px); padding: clamp(25px, 5vw, 55px); background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-lg); }
+    .contact-copy h2 { margin-bottom: 18px; }
+    .contact-copy > p { color: var(--muted); font-size: 14px; }
+    .contact-detail { margin-top: 26px; }
+    .contact-detail a { display: block; width: fit-content; margin: 11px 0; color: var(--text); font-size: 13px; }
+    .social-links { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 22px; }
+    .social-links a { color: var(--muted); font: 11px var(--font-mono); }
+    .social-links a:hover { color: var(--accent); }
+    .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: var(--muted); font: 10px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+    .field input, .field textarea, .field select { width: 100%; min-height: 47px; padding: 12px 13px; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+    .field textarea { min-height: 125px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: .75; }
+    .form-message { grid-column: 1 / -1; min-height: 20px; margin: 0; color: var(--accent-strong); font-size: 12px; }
+    .site-footer { padding: 27px 0; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--muted); font: 10px var(--font-mono); }
+    .back-top { color: var(--accent); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* -------------------------------------------------------
+       RESPONSIVE
+    ------------------------------------------------------- */
+    @media (max-width: 980px) {
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 11px; }
+      .nav-cta { display: none; }
+      .stack-wrap { grid-template-columns: repeat(3, 1fr); }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px) {
+      :root { --nav-height: 66px; --space-9: 68px; }
+      .container { width: min(100% - 36px, var(--container)); }
+      .section-head { display: block; }
+      .section-intro { margin-top: 15px; }
+      .menu-toggle { display: grid; }
+      .nav-links { display: none; position: absolute; top: calc(100% + 1px); left: 0; right: 0; padding: 18px 24px 22px; background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 11px 0; font-size: 13px; border-bottom: 1px solid var(--line); }
+      .nav-links a:last-child { border: 0; }
+      .hero { padding: 72px 0 70px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 38px; }
+      .hero h1 { font-size: clamp(3.5rem, 15vw, 6rem); }
+      .signal-card { max-width: 560px; }
+      .hero-index { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .portrait-placeholder { min-height: 290px; max-width: 420px; }
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      .venture-grid, .services-grid, .testimonial-grid { grid-template-columns: 1fr 1fr; }
+      .contact-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .container { width: calc(100% - 32px); }
+      .brand { font-size: 13px; }
+      .nav-actions { gap: 7px; }
+      .hero h1 { font-size: clamp(3.15rem, 15vw, 4.5rem); }
+      .hero-actions .btn { flex: 1 1 auto; }
+      .expertise-grid, .venture-grid, .project-grid, .writing-list, .services-grid, .testimonial-grid { grid-template-columns: 1fr; }
+      .stack-wrap { grid-template-columns: 1fr 1fr; }
+      .contact-form { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .writing-item { padding: 16px; }
+      .project-card { min-height: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hoor un Nisa",
+    "jobTitle": "AI Engineer & AI Entrepreneur",
+    "description": "Builds production AI systems and turns them into products and companies.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Multan", "addressCountry": "PK" },
+    "url": "[EDIT: YOUR_WEBSITE_URL]",
+    "sameAs": [
+      "[EDIT: LINKEDIN_URL]",
+      "[EDIT: GITHUB_URL]",
+      "[EDIT: X_URL]"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- 1. STICKY NAVIGATION -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Hoor un Nisa, home">
+        <span class="brand-mark" aria-hidden="true">HN</span>
+        <span>Hoor un Nisa<span style="color:var(--accent)">.</span></span>
+      </a>
+      <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#expertise">Expertise</a><a href="#ventures">Ventures</a>
+        <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+          <svg id="theme-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42m-9.88 9.88-1.42 1.42"/><circle cx="12" cy="12" r="4"/></svg>
+        </button>
+        <a class="btn nav-cta" href="#contact">Work with me <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 2. HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="availability"><span class="availability-dot"></span> OPEN TO SELECT COLLABORATIONS <span aria-hidden="true">·</span> MULTAN, PK</div>
+          <p class="eyebrow">AI engineering / venture building</p>
+          <h1>Hoor un <span>Nisa.</span></h1>
+          <p class="hero-lede">AI Engineer & Entrepreneur, building intelligent products that make it into the real world.</p>
+          <p class="hero-copy">I work across the full journey: from designing dependable AI systems to shaping the products, teams, and businesses that bring them to market.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contact">Work with me <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-secondary" href="#projects">Explore selected work <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note">BUILDS THE TECHNOLOGY. BUILDS THE BUSINESS AROUND IT.</div>
+        </div>
+        <div class="signal-card reveal" aria-label="Illustration of an AI product pipeline from data to deployed product">
+          <div class="signal-top"><span>System / 001</span><span class="signal-status">Pipeline active</span></div>
+          <svg class="signal-svg" viewBox="0 0 480 300" role="img" aria-labelledby="signal-title signal-desc">
+            <title id="signal-title">From intelligence to impact</title>
+            <desc id="signal-desc">A connected technical flow linking data, models, agents, and products.</desc>
+            <path class="gridline" d="M0 50H480M0 100H480M0 150H480M0 200H480M0 250H480M60 0V300M120 0V300M180 0V300M240 0V300M300 0V300M360 0V300M420 0V300"/>
+            <path class="path" d="M48 220 C100 220 94 155 155 155 S205 75 260 100 S330 190 380 120 S420 70 448 70"/>
+            <path d="M48 220 C100 220 94 155 155 155 S205 75 260 100 S330 190 380 120 S420 70 448 70" fill="none" stroke="var(--accent)" stroke-width="10" opacity=".07"/>
+            <circle class="node" cx="48" cy="220" r="8"/><circle class="node" cx="155" cy="155" r="8"/>
+            <circle class="node" cx="260" cy="100" r="8"/><circle class="node" cx="380" cy="120" r="8"/>
+            <circle class="pulse" cx="448" cy="70" r="5"/>
+            <g fill="var(--muted)" font-family="DM Mono, monospace" font-size="10">
+              <text x="26" y="247">DATA</text><text x="128" y="181">MODEL</text>
+              <text x="235" y="77">AGENT</text><text x="354" y="147">PRODUCT</text>
+              <text x="406" y="48" fill="var(--accent)">IMPACT</text>
+            </g>
+          </svg>
+          <div class="signal-legend"><span>ENGINEERING <strong>→</strong> EXECUTION</span><span>01 — 04</span></div>
+        </div>
+      </div>
+      <div class="hero-index">01 / INDEPENDENT THINKING. PRACTICAL BUILDING.</div>
+    </section>
+
+    <!-- 3. ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">A little context</p><h2>Engineer’s mindset.<br>Founder’s perspective.</h2></div><p class="section-intro">The most useful technology is not just impressive in a demo. It solves a meaningful problem, earns trust, and creates value.</p></div>
+        <div class="about-grid">
+          <div class="portrait-placeholder reveal" role="img" aria-label="Portrait placeholder for Hoor un Nisa. Replace with a professional photograph.">
+            <span class="portrait-initials" aria-hidden="true">HN</span>
+            <span class="portrait-caption">[EDIT] ADD YOUR PORTRAIT</span>
+          </div>
+          <div class="about-copy reveal">
+            <p>I’m Hoor un Nisa, an AI Engineer and entrepreneur based in Multan, Pakistan. I’m interested in the space where ambitious ideas meet sound engineering: building AI products that are useful, scalable, and ready for real users.</p>
+            <p>My work brings technical depth and commercial thinking into the same room. I explore how LLMs, agentic workflows, retrieval systems, and machine learning can become products people rely on—and businesses that can grow.</p>
+            <p>[EDIT] Add a personal detail about your background, the problems you care most about, and what motivates your work.</p>
+            <div class="facts">
+              <div class="fact"><strong>[EDIT]</strong><span>YEARS BUILDING</span></div>
+              <div class="fact"><strong>[EDIT]</strong><span>PRODUCTS SHIPPED</span></div>
+              <div class="fact"><strong>[EDIT]</strong><span>VENTURES FOUNDED</span></div>
+              <div class="fact"><strong>Multan</strong><span>BASED IN PAKISTAN</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. EXPERTISE -->
+    <section class="section" id="expertise" style="background:var(--surface-2)">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">What I bring</p><h2>Two disciplines.<br>One direction.</h2></div><p class="section-intro">Technical execution and business building are complementary capabilities—not separate tracks.</p></div>
+        <div class="expertise-grid">
+          <article class="expertise-card card reveal">
+            <span class="card-kicker">01 / AI Engineering</span><h3>From model capability<br>to production system.</h3>
+            <p>Designing, building, and improving AI systems with reliability, evaluation, and the end-user experience in mind.</p>
+            <div class="skill-list"><span class="tag">LLM applications</span><span class="tag">Agentic systems</span><span class="tag">RAG</span><span class="tag">Fine-tuning</span><span class="tag">MLOps</span><span class="tag">Data pipelines</span><span class="tag">Evaluation</span></div>
+          </article>
+          <article class="expertise-card card reveal">
+            <span class="card-kicker">02 / Entrepreneurship</span><h3>From promising idea<br>to durable business.</h3>
+            <p>Connecting customer needs, product decisions, commercial strategy, and the people required to deliver.</p>
+            <div class="skill-list"><span class="tag">Product strategy</span><span class="tag">Go-to-market</span><span class="tag">Fundraising</span><span class="tag">Team building</span><span class="tag">AI transformation</span><span class="tag">Venture design</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. VENTURES -->
+    <section class="section" id="ventures">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">Building in the world</p><h2>Ventures & products.</h2></div><p class="section-intro">A selection of companies and products I’m building or contributing to. Replace the sample entries with verified details.</p></div>
+        <div class="venture-grid" id="venture-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- 6. FEATURED PROJECTS -->
+    <section class="section" id="projects" style="background:var(--surface-2)">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">Selected work</p><h2>Ideas made tangible.</h2></div><p class="section-intro">A practical portfolio of experiments and shipped work. Outcomes and links are clearly marked for editing until verified.</p></div>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button class="filter-btn" type="button" data-filter="All" aria-pressed="true">All</button>
+          <button class="filter-btn" type="button" data-filter="Agents" aria-pressed="false">Agents</button>
+          <button class="filter-btn" type="button" data-filter="RAG" aria-pressed="false">RAG</button>
+          <button class="filter-btn" type="button" data-filter="ML" aria-pressed="false">ML</button>
+          <button class="filter-btn" type="button" data-filter="Products" aria-pressed="false">Products</button>
+        </div>
+        <div class="project-grid" id="project-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- 7. TECH STACK -->
+    <section class="section" id="stack">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">Tools of the trade</p><h2>Technology, thoughtfully used.</h2></div><p class="section-intro">A working toolkit across application development, AI systems, infrastructure, and data.</p></div>
+        <div class="stack-wrap reveal">
+          <div class="stack-group"><h3>Languages</h3><div class="stack-items"><span>Python</span><span>TypeScript</span><span>SQL</span><span>[EDIT]</span></div></div>
+          <div class="stack-group"><h3>LLM & AI</h3><div class="stack-items"><span>OpenAI</span><span>Hugging Face</span><span>PyTorch</span><span>LangChain</span><span>[EDIT]</span></div></div>
+          <div class="stack-group"><h3>Frameworks</h3><div class="stack-items"><span>FastAPI</span><span>Next.js</span><span>React</span><span>[EDIT]</span></div></div>
+          <div class="stack-group"><h3>Cloud & MLOps</h3><div class="stack-items"><span>Docker</span><span>AWS</span><span>GitHub Actions</span><span>[EDIT]</span></div></div>
+          <div class="stack-group"><h3>Data</h3><div class="stack-items"><span>PostgreSQL</span><span>Vector DBs</span><span>Redis</span><span>[EDIT]</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. EXPERIENCE -->
+    <section class="section" id="experience" style="background:var(--surface-2)">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">The path so far</p><h2>Experience & milestones.</h2></div><p class="section-intro">A timeline of roles, learning, and meaningful steps. Add dates and details that reflect your actual experience.</p></div>
+        <div class="timeline reveal" id="timeline">
+          <article class="timeline-item"><span class="timeline-date">[EDIT: YEAR – PRESENT]</span><h3>[EDIT] AI Engineer / Founder</h3><p>[EDIT] Describe your current focus, responsibilities, and one meaningful achievement.</p></article>
+          <article class="timeline-item"><span class="timeline-date">[EDIT: YEAR – YEAR]</span><h3>[EDIT] Previous role or venture</h3><p>[EDIT] Add the organisation, your contribution, and the outcome.</p></article>
+          <article class="timeline-item"><span class="timeline-date">[EDIT: YEAR]</span><h3>[EDIT] Education / first milestone</h3><p>[EDIT] Add your qualification, programme, or an important career milestone.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. SPEAKING & WRITING -->
+    <section class="section" id="writing">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">Ideas in public</p><h2>Speaking & writing.</h2></div><p class="section-intro">Notes, conversations, and practical lessons from building with AI.</p></div>
+        <div class="writing-list reveal">
+          <a class="writing-item card" href="[EDIT: ARTICLE_URL]" target="_blank" rel="noopener noreferrer"><div><span class="writing-kind">Article · [EDIT: DATE]</span><h3>[EDIT] A practical perspective on building with AI</h3><p>[EDIT] PUBLICATION / PLATFORM</p></div><span aria-hidden="true">↗</span></a>
+          <a class="writing-item card" href="[EDIT: TALK_URL]" target="_blank" rel="noopener noreferrer"><div><span class="writing-kind">Talk · [EDIT: DATE]</span><h3>[EDIT] From AI prototype to production</h3><p>[EDIT] EVENT / ORGANISATION</p></div><span aria-hidden="true">↗</span></a>
+          <a class="writing-item card" href="[EDIT: PODCAST_URL]" target="_blank" rel="noopener noreferrer"><div><span class="writing-kind">Podcast · [EDIT: DATE]</span><h3>[EDIT] Building useful AI products</h3><p>[EDIT] SHOW / PUBLICATION</p></div><span aria-hidden="true">↗</span></a>
+          <a class="writing-item card" href="[EDIT: PUBLICATION_URL]" target="_blank" rel="noopener noreferrer"><div><span class="writing-kind">Publication · [EDIT: DATE]</span><h3>[EDIT] Research, essay, or technical guide</h3><p>[EDIT] PLATFORM / JOURNAL</p></div><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. TESTIMONIALS -->
+    <section class="section" style="background:var(--surface-2)" id="testimonials">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">People I’ve worked with</p><h2>Good work is collaborative.</h2></div><p class="section-intro">Replace these clearly marked placeholders with approved, attributable testimonials.</p></div>
+        <div class="testimonial-grid reveal">
+          <article class="quote-card card"><div class="quote-mark" aria-hidden="true">“</div><blockquote>[EDIT] Add a specific quote about Hoor’s technical judgment, ownership, or delivery.</blockquote><div class="quote-author">[EDIT] NAME · ROLE, ORGANISATION</div><span class="placeholder-note">PLACEHOLDER — NOT A REAL TESTIMONIAL</span></article>
+          <article class="quote-card card"><div class="quote-mark" aria-hidden="true">“</div><blockquote>[EDIT] Add a quote about product thinking, collaboration, or business impact.</blockquote><div class="quote-author">[EDIT] NAME · ROLE, ORGANISATION</div><span class="placeholder-note">PLACEHOLDER — NOT A REAL TESTIMONIAL</span></article>
+          <article class="quote-card card"><div class="quote-mark" aria-hidden="true">“</div><blockquote>[EDIT] Add a quote that illustrates what it is like to build alongside Hoor.</blockquote><div class="quote-author">[EDIT] NAME · ROLE, ORGANISATION</div><span class="placeholder-note">PLACEHOLDER — NOT A REAL TESTIMONIAL</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">Ways to work together</p><h2>From first question<br>to measurable outcome.</h2></div><p class="section-intro">Focused engagements for teams that want to move from AI ambition to a clear, executable plan.</p></div>
+        <div class="services-grid">
+          <article class="service-card card reveal"><span class="service-number">01 / BUILD</span><h3>AI Product Build</h3><p>Turn a validated problem into a dependable AI-powered product.</p><ul><li>Discovery and technical architecture</li><li>LLM, RAG, or agent implementation</li><li>Evaluation, deployment, and handover</li></ul><a class="text-link" href="#contact">Discuss a build <span aria-hidden="true">↗</span></a></article>
+          <article class="service-card card reveal"><span class="service-number">02 / ADVISE</span><h3>AI Strategy Advisory</h3><p>Identify where AI can create value—and what it will take to deliver it.</p><ul><li>Opportunity and workflow assessment</li><li>Use-case prioritisation and roadmap</li><li>Architecture and vendor guidance</li></ul><a class="text-link" href="#contact">Plan a strategy session <span aria-hidden="true">↗</span></a></article>
+          <article class="service-card card reveal"><span class="service-number">03 / ASSESS</span><h3>Technical Due Diligence</h3><p>Get a clear-eyed view of an AI product’s technical maturity and risks.</p><ul><li>Architecture and model review</li><li>Data, evaluation, and security risks</li><li>Practical recommendations</li></ul><a class="text-link" href="#contact">Request an assessment <span aria-hidden="true">↗</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div class="contact-copy">
+            <p class="eyebrow">Start a conversation</p><h2>Have a meaningful problem to solve?</h2>
+            <p>Tell me what you’re building, exploring, or trying to improve. I’m open to thoughtful conversations with founders, teams, and collaborators.</p>
+            <div class="contact-detail">
+              <a href="mailto:[EDIT: EMAIL_ADDRESS]">[EDIT: EMAIL_ADDRESS]</a>
+              <a href="[EDIT: CALENDLY_URL]" target="_blank" rel="noopener noreferrer">Schedule a conversation ↗</a>
+            </div>
+            <div class="social-links" aria-label="Social links">
+              <a href="[EDIT: LINKEDIN_URL]" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a>
+              <a href="[EDIT: GITHUB_URL]" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+              <a href="[EDIT: X_URL]" target="_blank" rel="noopener noreferrer">X ↗</a>
+            </div>
+          </div>
+          <form class="contact-form" id="contact-form">
+            <div class="field"><label for="name">Name *</label><input id="name" name="name" autocomplete="name" required maxlength="100" placeholder="Your name"></div>
+            <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="160" placeholder="you@example.com"></div>
+            <div class="field"><label for="organisation">Organisation</label><input id="organisation" name="organisation" autocomplete="organization" maxlength="120" placeholder="Company or team"></div>
+            <div class="field"><label for="inquiry">Inquiry type *</label><select id="inquiry" name="inquiry" required><option value="">Choose one</option><option>AI product build</option><option>Strategy advisory</option><option>Technical due diligence</option><option>Speaking or media</option><option>Other collaboration</option></select></div>
+            <div class="field full"><label for="message">Message *</label><textarea id="message" name="message" required minlength="10" maxlength="3000" placeholder="A little context about what you have in mind…"></textarea></div>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+            <div class="field full"><button class="btn" type="submit">Send an inquiry <span aria-hidden="true">↗</span></button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 13. FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> HOOR UN NISA. BUILT WITH INTENTION.</span>
+      <span>AI ENGINEERING × ENTREPRENEURSHIP</span>
+      <a class="back-top" href="#top">BACK TO TOP ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    /* -------------------------------------------------------
+       EDITABLE CONTENT DATA — update ventures and projects here.
+    ------------------------------------------------------- */
+    const ventures = [
+      {
+        name: "[EDIT] Venture / Product One",
+        description: "[EDIT] One clear sentence explaining the customer problem and the product's value.",
+        role: "[EDIT] Founder / Co-founder",
+        status: "Building",
+        metric: "[EDIT] Add verified traction metric",
+        url: "[EDIT: VENTURE_ONE_URL]"
+      },
+      {
+        name: "[EDIT] Venture / Product Two",
+        description: "[EDIT] Describe the product, who it serves, and what makes it useful.",
+        role: "[EDIT] Founder / Advisor",
+        status: "Live",
+        metric: "[EDIT] Add verified outcome",
+        url: "[EDIT: VENTURE_TWO_URL]"
+      },
+      {
+        name: "[EDIT] Venture / Product Three",
+        description: "[EDIT] Add a concise description of another company or product.",
+        role: "[EDIT] [YOUR ROLE]",
+        status: "Building",
+        metric: "[EDIT] Add verified milestone",
+        url: "[EDIT: VENTURE_THREE_URL]"
+      }
+    ];
+
+    const projects = [
+      {
+        category: "Agents",
+        name: "[EDIT] Intelligent workflow agent",
+        problem: "[EDIT] A repetitive workflow creates delays and inconsistent handoffs.",
+        approach: "[EDIT] An agentic workflow with tool use, guardrails, and human review.",
+        stack: ["Python", "LLMs", "FastAPI"],
+        outcome: "[EDIT] Add measured time saved or quality improvement.",
+        github: "[EDIT: GITHUB_PROJECT_URL]",
+        demo: "[EDIT: PROJECT_DEMO_URL]",
+        caseStudy: "[EDIT: CASE_STUDY_URL]"
+      },
+      {
+        category: "RAG",
+        name: "[EDIT] Knowledge retrieval assistant",
+        problem: "[EDIT] Important organisational knowledge is difficult to find and verify.",
+        approach: "[EDIT] Grounded retrieval with source citations and an evaluation set.",
+        stack: ["RAG", "Embeddings", "Vector DB"],
+        outcome: "[EDIT] Add verified retrieval or adoption metric.",
+        github: "[EDIT: GITHUB_PROJECT_URL]",
+        demo: "[EDIT: PROJECT_DEMO_URL]",
+        caseStudy: "[EDIT: CASE_STUDY_URL]"
+      },
+      {
+        category: "ML",
+        name: "[EDIT] Predictive intelligence pipeline",
+        problem: "[EDIT] Teams need a repeatable way to turn operational data into predictions.",
+        approach: "[EDIT] A monitored training and inference pipeline with model evaluation.",
+        stack: ["Python", "PyTorch", "MLflow"],
+        outcome: "[EDIT] Add verified model or business metric.",
+        github: "[EDIT: GITHUB_PROJECT_URL]",
+        demo: "[EDIT: PROJECT_DEMO_URL]",
+        caseStudy: "[EDIT: CASE_STUDY_URL]"
+      },
+      {
+        category: "Products",
+        name: "[EDIT] AI-enabled product experience",
+        problem: "[EDIT] Users need a simpler way to complete a high-friction task.",
+        approach: "[EDIT] A user-centred product flow with AI embedded where it adds value.",
+        stack: ["TypeScript", "Next.js", "LLMs"],
+        outcome: "[EDIT] Add verified activation or conversion result.",
+        github: "[EDIT: GITHUB_PROJECT_URL]",
+        demo: "[EDIT: PROJECT_DEMO_URL]",
+        caseStudy: "[EDIT: CASE_STUDY_URL]"
+      }
+    ];
+
+    /* -------------------------------------------------------
+       HELPERS + VENTURE / PROJECT RENDERING
+    ------------------------------------------------------- */
+    const safeLink = (url) => url && !url.includes("[EDIT") ? url : "";
+    const escapeHTML = (value) => String(value).replace(/[&<>"']/g, char => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[char]);
+
+    const ventureGrid = document.getElementById("venture-grid");
+    ventureGrid.innerHTML = ventures.map(item => `
+      <article class="venture-card card">
+        <div class="card-topline"><span class="mono muted" style="font-size:10px">VENTURE / ${escapeHTML(item.role)}</span><span class="status">${escapeHTML(item.status)}</span></div>
+        <h3>${escapeHTML(item.name)}</h3>
+        <p>${escapeHTML(item.description)}</p>
+        <div class="venture-meta"><span>${escapeHTML(item.metric)}</span>${safeLink(item.url) ? `<a class="text-link" href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">Visit ↗</a>` : "<span>[EDIT LINK]</span>"}</div>
+      </article>`).join("");
+
+    const projectGrid = document.getElementById("project-grid");
+    function renderProjects(filter = "All") {
+      const filtered = filter === "All" ? projects : projects.filter(project => project.category === filter);
+      if (!filtered.length) {
+        projectGrid.innerHTML = '<p class="empty-state">No projects in this category yet.</p>';
+        return;
+      }
+      projectGrid.innerHTML = filtered.map(project => {
+        const links = [
+          ["GitHub", project.github], ["Demo", project.demo], ["Case study", project.caseStudy]
+        ].filter(([, url]) => safeLink(url));
+        return `<article class="project-card card">
+          <span class="project-type">${escapeHTML(project.category)} / SELECTED PROJECT</span>
+          <h3>${escapeHTML(project.name)}</h3>
+          <p class="project-problem"><strong>Problem</strong> — ${escapeHTML(project.problem)}</p>
+          <p class="project-approach"><strong>Approach</strong> — ${escapeHTML(project.approach)}</p>
+          <div class="skill-list">${project.stack.map(tech => `<span class="tag">${escapeHTML(tech)}</span>`).join("")}</div>
+          <div class="project-outcome">${escapeHTML(project.outcome)}</div>
+          <div class="project-links">${links.length ? links.map(([label, url]) => `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`).join("") : '<span class="muted mono" style="font-size:10px">[EDIT: ADD PROJECT LINKS]</span>'}</div>
+        </article>`;
+      }).join("");
+    }
+    renderProjects();
+
+    /* -------------------------------------------------------
+       PROJECT FILTERS
+    ------------------------------------------------------- */
+    document.querySelectorAll(".filter-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+        renderProjects(button.dataset.filter);
+      });
+    });
+
+    /* -------------------------------------------------------
+       THEME TOGGLE — system preference is the default.
+    ------------------------------------------------------- */
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+    const storedTheme = (() => { try { return localStorage.getItem("hoor-theme"); } catch (_) { return null; } })();
+    if (storedTheme === "light" || storedTheme === "dark") document.documentElement.dataset.theme = storedTheme;
+    function updateThemeControl() {
+      const dark = document.documentElement.dataset.theme === "dark" ||
+        (!document.documentElement.dataset.theme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      themeToggle.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+      themeToggle.title = dark ? "Switch to light theme" : "Switch to dark theme";
+      themeIcon.innerHTML = dark
+        ? '<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"/>'
+        : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>';
+    }
+    themeToggle.addEventListener("click", () => {
+      const currentDark = document.documentElement.dataset.theme === "dark" ||
+        (!document.documentElement.dataset.theme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      const next = currentDark ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem("hoor-theme", next); } catch (_) {}
+      updateThemeControl();
+    });
+    updateThemeControl();
+
+    /* -------------------------------------------------------
+       MOBILE NAVIGATION
+    ------------------------------------------------------- */
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("primary-navigation");
+    function closeMenu() {
+      nav.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+    }
+    menuToggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    });
+    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeMenu(); });
+
+    /* -------------------------------------------------------
+       SCROLL REVEALS — disabled when reduced motion is requested.
+    ------------------------------------------------------- */
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("is-visible"));
+    }
+
+    /* -------------------------------------------------------
+       CONTACT FORM — validates locally, then opens mail client.
+    ------------------------------------------------------- */
+    document.getElementById("contact-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const message = document.getElementById("form-message");
+      if (!form.reportValidity()) return;
+      const recipient = "[EDIT: EMAIL_ADDRESS]";
+      if (recipient.includes("[EDIT")) {
+        message.textContent = "The form is ready. Add your email address in the HTML to enable the mailto handoff.";
+        return;
+      }
+      const values = new FormData(form);
+      const subject = encodeURIComponent(`${values.get("inquiry")} — website inquiry from ${values.get("name")}`);
+      const body = encodeURIComponent(
+        `Name: ${values.get("name")}\nEmail: ${values.get("email")}\nOrganisation: ${values.get("organisation") || "Not provided"}\nInquiry: ${values.get("inquiry")}\n\n${values.get("message")}`
+      );
+      message.textContent = "Opening your email application…";
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    });
+
+    /* -------------------------------------------------------
+       FOOTER YEAR
+    ------------------------------------------------------- */
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
