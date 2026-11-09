@@ -792,25 +792,43 @@
     }
 
     /* -------------------------------------------------------
-       CONTACT FORM — validates locally, then opens mail client.
+       CONTACT FORM → n8n webhook
+       Replace the URL below with your n8n PRODUCTION webhook URL.
     ------------------------------------------------------- */
-    document.getElementById("contact-form").addEventListener("submit", event => {
+    const N8N_WEBHOOK_URL = "https://hoor9899.app.n8n.cloud/webhook/hoor-portfolio-contact-form";
+    document.getElementById("contact-form").addEventListener("submit", async event => {
       event.preventDefault();
       const form = event.currentTarget;
       const message = document.getElementById("form-message");
+      const submitButton = form.querySelector('button[type="submit"]');
       if (!form.reportValidity()) return;
-      const recipient = "[EDIT: EMAIL_ADDRESS]";
-      if (recipient.includes("[EDIT")) {
-        message.textContent = "The form is ready. Add your email address in the HTML to enable the mailto handoff.";
+      if (!N8N_WEBHOOK_URL.startsWith("https://") || N8N_WEBHOOK_URL.includes("PASTE_YOUR")) {
+        message.textContent = "Contact form setup is pending. Please add the n8n production webhook URL.";
         return;
       }
       const values = new FormData(form);
-      const subject = encodeURIComponent(`${values.get("inquiry")} — website inquiry from ${values.get("name")}`);
-      const body = encodeURIComponent(
-        `Name: ${values.get("name")}\nEmail: ${values.get("email")}\nOrganisation: ${values.get("organisation") || "Not provided"}\nInquiry: ${values.get("inquiry")}\n\n${values.get("message")}`
-      );
-      message.textContent = "Opening your email application…";
-      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+      // Form encoding avoids a JSON CORS preflight on GitHub Pages.
+      const payload = new URLSearchParams();
+      for (const key of ["name", "email", "organisation", "inquiry", "message"]) {
+        payload.set(key, String(values.get(key) || ""));
+      }
+      submitButton.disabled = true;
+      message.textContent = "Sending your message…";
+      try {
+        const response = await fetch(N8N_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+          body: payload.toString()
+        });
+        if (!response.ok) throw new Error("Webhook returned " + response.status);
+        message.textContent = "Thank you! Your message was sent successfully.";
+        form.reset();
+      } catch (error) {
+        console.error("Contact form delivery failed:", error);
+        message.textContent = "Message could not be confirmed. Please try again later.";
+      } finally {
+        submitButton.disabled = false;
+      }
     });
 
     /* -------------------------------------------------------
